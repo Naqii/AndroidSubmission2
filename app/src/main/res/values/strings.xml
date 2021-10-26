@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">SubmissionSatu</string>
+
+    <string name="name">Name</string>
+    <string name="username">Username</string>
+    <string name="data_location">Data Location</string>
+    <string name="location">Location</string>
+    <string name="data_name">data_name</string>
+    <string name="repository">Repository</string>
+    <string name="data_repository">data_repository</string>
+    <string name="share">Share</string>
+    <string name="data_following">data_following</string>
+    <string name="following">Following</string>
+    <string name="data_follower">data_follower</string>
+    <string name="followers">Followers</string>
+    <string name="data_company">data_company</string>
+    <string name="company">Company</string>
+    <string name="avatar">Avatar</string>
+    <string name="search">Search</string>
+    <string name="search_hint">Search Hint</string>
+
+    <string name="this_activity">Ini adalah menu activity</string>
+    <string name="this_fragment">Ini adalah menu fragment</string>
+    <string name="menu_1">Menu 1</string>
+    <string name="menu_2">Menu 2</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
+
+

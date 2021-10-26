@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".view.DetailUser">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            tools:ignore="ContentDescription"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/text_username"
+            style="@style/Detail_Sub1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/username"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/Detail_Sub1"
+                android:text="@string/name" />
+
+            <TextView
+                android:id="@+id/text_name"
+                style="@style/Detail_Sub2"
+                android:layout_width="wrap_content"
+                android:text="@string/data_name" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/location"
+                style="@style/Detail_Sub1"
+                android:text="@string/location" />
+
+            <TextView
+                android:id="@+id/text_location"
+                style="@style/Detail_Sub2"
+                android:text="@string/data_name" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/repository"
+                style="@style/Detail_Sub1"
+                android:text="@string/repository" />
+
+            <TextView
+                android:id="@+id/text_repository"
+                style="@style/Detail_Sub2"
+                android:text="@string/data_repository" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/company"
+                style="@style/Detail_Sub1"
+                android:text="@string/company" />
+
+            <TextView
+                android:id="@+id/text_company"
+                style="@style/Detail_Sub2"
+                android:text="@string/data_company" />
+        </TableRow>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            app:tabTextColor="@color/Option4" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</ScrollView>
