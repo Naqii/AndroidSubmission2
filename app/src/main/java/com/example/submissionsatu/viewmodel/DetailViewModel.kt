@@ -14,12 +14,12 @@ class DetailViewModel : ViewModel() {
     val listUser = MutableLiveData<ArrayList<User>>()
 
     fun setDetailUser(id: String) {
-        val detailUser = ArrayList<User>()
         val client = AsyncHttpClient()
-        client.addHeader("Authorization", "token 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")
+        val url = "https://api.github.com/users/$id"
+        val detailUser = ArrayList<User>()
         client.addHeader("User-Agent", "request")
-        client.get(
-            "https://api.github.com/users/$id", object : AsyncHttpResponseHandler() {
+        client.addHeader("Authorization", "token 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")
+        client.get(url, object : AsyncHttpResponseHandler() {
                 override fun onSuccess(
                     statusCode: Int,
                     headers: Array<Header>,
@@ -55,7 +55,7 @@ class DetailViewModel : ViewModel() {
                         401 -> "$statusCode : Bad Request"
                         403 -> "$statusCode : Forbidden"
                         404 -> "$statusCode : Not Found"
-                        else -> "$statusCode : ${error.message + " DETAIL"}"
+                        else -> "$statusCode : ${error.message + " DETAIL "}"
                     }
                     Log.d("error", errorMessage)
                 }

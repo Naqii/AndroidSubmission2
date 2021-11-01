@@ -1,13 +1,10 @@
 package com.example.submissionsatu.viewmodel
 
 import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.submissionsatu.model.User
-import com.example.submissionsatu.view.fragment.Followers
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -16,14 +13,13 @@ import org.json.JSONArray
 class FollowersModel : ViewModel() {
     val followersModel = MutableLiveData<ArrayList<User>>()
 
-    fun setDataFollowers(id: String) {
+    fun setDataFollowers(username: String) {
         val listItem = ArrayList<User>()
         val client = AsyncHttpClient()
-        client.addHeader("Authorization", "token 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")
+        val url = "https://api.github.com/users/${username}/followers"
         client.addHeader("User-Agent", "request")
-        client.get(
-            "https://api.github.com/users/$id/followers",
-            object : AsyncHttpResponseHandler() {
+        client.addHeader("Authorization", "token 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")
+        client.get(url, object : AsyncHttpResponseHandler() {
                 override fun onSuccess(
                     statusCode: Int,
                     headers: Array<Header>,
@@ -40,6 +36,7 @@ class FollowersModel : ViewModel() {
                             user.avatar = jsonObject.getString("avatar_url")
                             listItem.add(user)
                         }
+                        followersModel.postValue(listItem)
                     } catch (e: Exception) {
                         Log.d("Exception", e.message.toString())
                     }

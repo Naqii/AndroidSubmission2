@@ -16,7 +16,7 @@ class MainViewModel : ViewModel() {
     fun setMainUser(){
         val listItem = ArrayList<User>()
         val client = AsyncHttpClient()
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         client.addHeader("User-Agent", "request")
         client.get(
             "https://api.github.com/users",

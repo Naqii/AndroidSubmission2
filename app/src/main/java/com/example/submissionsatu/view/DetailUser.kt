@@ -2,6 +2,7 @@ package com.example.submissionsatu.view
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -39,6 +40,36 @@ class DetailUser : AppCompatActivity() {
         supportActionBar?.title = "Detail User"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val userList = intent.getParcelableExtra<User>(EXTRA_DATA) as User
+        getUserDetail = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(DetailViewModel::class.java)
+        getUserDetail.getDetailUser().observe(this, { userDetail ->
+            if (userDetail != null) {
+                Log.d("tag", userDetail[0].toString())
+                view(userDetail[0])
+            }
+        })
+        getUserDetail.setDetailUser(userList.username)
+        tabLayout()
+    }
+
+    private fun view(user: User) {
+        with(binding) {
+            Glide.with(this@DetailUser)
+                .load(user.avatar)
+                .apply(RequestOptions().override(150, 150))
+                .into(imgAvatar)
+            textName.text = user.name
+            textUsername.text = user.username
+            textLocation.text = user.location
+            textRepository.text = user.repository
+            textCompany.text = user.company
+        }
+    }
+
+    private fun tabLayout() {
         val sectionsPagerAdapter = SectionsPagerAdapter(this)
         val viewPager: ViewPager2 = findViewById(R.id.view_pager)
         viewPager.adapter = sectionsPagerAdapter
@@ -47,40 +78,7 @@ class DetailUser : AppCompatActivity() {
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
         supportActionBar?.elevation = 0f
-
-        val userList = intent.getParcelableExtra<User>(EXTRA_DATA) as User
-        showDataUser(userList.toString())
-
-        with(binding){
-            Glide.with(this@DetailUser)
-                .load(userList.avatar)
-                .apply(RequestOptions().override(150,150))
-                .into(binding.imgAvatar)
-            textName.text = userList.name
-            textUsername.text = userList.username
-            textLocation.text = userList.location
-            textRepository.text = userList.repository
-        }
     }
-
-    private fun showDataUser(username: String) {
-        getUserDetail = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        ).get(DetailViewModel::class.java)
-        getUserDetail.setDetailUser(username)
-        getUserDetail.getDetailUser().observe(this, { userDetail ->
-            if (userDetail != null) {
-                Log.d("tag", userDetail[0].toString())
-                view(userDetail[0])
-            }
-        })
-    }
-
-    private fun view(user: User) {
-
-    }
-
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
