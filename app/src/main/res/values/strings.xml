@@ -24,7 +24,22 @@
     <string name="menu_1">Menu 1</string>
     <string name="menu_2">Menu 2</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="setting">Setting</string>
+    <string name="favourite">Favourite</string>
+    <string name="delete">Delete</string>
+    <string name="submit">Favourite</string>
+    <string name="cancel">Cancel</string>
+    <string name="message_cancel">Apakah anda ingin membatalkan perubahan pada form?</string>
+    <string name="message_delete">Apakah anda yakin ingin menghapus item ini?</string>
+    <string name="yes">Ya</string>
+    <string name="deleted">Satu item berhasil dihapus</string>
+    <string name="no">Tidak</string>
+    <string name="tambah">Berhasil ditambahkan ke favorite</string>
+    <string name="hapus">Berhasil dihapus dari favourite</string>
+    <string name="batal">Batal</string>
+    <string name="txt_hapus">Delete</string>
+    <string name="dialog_hapus">Apakah anda yakin ingin menghapus item ini?</string>
 </resources>
 
 

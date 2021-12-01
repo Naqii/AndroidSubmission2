@@ -18,7 +18,7 @@ class FollowingModel : ViewModel(){
         val client = AsyncHttpClient()
         val url = "https://api.github.com/users/${username}/following"
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         client.get(url, object : AsyncHttpResponseHandler(){
             override fun onSuccess(
                 statusCode: Int,

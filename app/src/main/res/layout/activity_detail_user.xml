@@ -6,17 +6,36 @@
     android:layout_height="wrap_content"
     tools:context=".view.DetailUser">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tv_detail_user"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:foregroundGravity="bottom"
+            app:fabSize="normal"
+            app:layout_anchor="@id/view_pager"
+            app:layout_anchorGravity="bottom|end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.954"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_favourite"
+            tools:ignore="ContentDescription" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_avatar"
             android:layout_width="300dp"
             android:layout_height="250dp"
             android:layout_gravity="center"
-            tools:ignore="ContentDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
 
         <TextView
@@ -27,29 +46,31 @@
             android:layout_gravity="center"
             android:text="@string/username"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_avatar" />
+
+        <TextView
+            android:id="@+id/text_name"
+            style="@style/Detail_Sub2"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/data_name"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_username" />
+
 
         <TableRow
+            android:id="@+id/tableRow3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <TextView
-                android:id="@+id/name"
-                style="@style/Detail_Sub1"
-                android:text="@string/name" />
-
-            <TextView
-                android:id="@+id/text_name"
-                style="@style/Detail_Sub2"
-                android:layout_width="wrap_content"
-                android:text="@string/data_name" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_name">
 
             <TextView
                 android:id="@+id/location"
@@ -57,36 +78,34 @@
                 android:text="@string/location" />
 
             <TextView
-                android:id="@+id/text_location"
-                style="@style/Detail_Sub2"
-                android:text="@string/data_name" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <TextView
                 android:id="@+id/repository"
                 style="@style/Detail_Sub1"
                 android:text="@string/repository" />
 
             <TextView
-                android:id="@+id/text_repository"
-                style="@style/Detail_Sub2"
-                android:text="@string/data_repository" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <TextView
                 android:id="@+id/company"
                 style="@style/Detail_Sub1"
                 android:text="@string/company" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableRow3">
+
+            <TextView
+                android:id="@+id/text_location"
+                style="@style/Detail_Sub2"
+                android:text="@string/data_name" />
+
+            <TextView
+                android:id="@+id/text_repository"
+                style="@style/Detail_Sub2"
+                android:text="@string/data_repository" />
 
             <TextView
                 android:id="@+id/text_company"
@@ -99,11 +118,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
-            app:tabTextColor="@color/Option4" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tableRow4"
+            app:tabTextColor="@color/Option1" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabs"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

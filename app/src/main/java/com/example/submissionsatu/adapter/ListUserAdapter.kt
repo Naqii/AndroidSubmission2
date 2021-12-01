@@ -8,8 +8,8 @@ import com.bumptech.glide.Glide
 import com.example.submissionsatu.databinding.ItemRowUserBinding
 import com.example.submissionsatu.model.User
 
-class ListUserAdapter(private val listUser: ArrayList<User>) :
-    RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
+class ListUserAdapter: RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
+    private val listUser = ArrayList<User>()
 
     @SuppressLint("NotifyDataSetChanged")
     fun setData(item: ArrayList<User>) {
@@ -29,7 +29,6 @@ class ListUserAdapter(private val listUser: ArrayList<User>) :
             .load(dataUser.avatar)
             .into(holder.binding.avatar)
         holder.binding.tvUsername.text = dataUser.username
-        holder.binding.tvName.text = dataUser.name
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(dataUser)
         }

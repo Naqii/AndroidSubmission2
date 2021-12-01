@@ -15,7 +15,7 @@ import com.example.submissionsatu.view.DetailUser
 import com.example.submissionsatu.viewmodel.FollowersModel
 
 class Followers : Fragment() {
-    private var listUser = ArrayList<User>()
+//    private var listUser = ArrayList<User>()
     private lateinit var getFollowersModel: FollowersModel
     private lateinit var binding: FragmentFollowersBinding
     private lateinit var adapter: ListUserAdapter
@@ -31,10 +31,10 @@ class Followers : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = ListUserAdapter(listUser)
+        adapter = ListUserAdapter()
         adapter.notifyDataSetChanged()
 
-        val userList = activity?.intent?.getParcelableExtra<User>(DetailUser.EXTRA_DATA) as User
+        val userList = activity?.intent?.getParcelableExtra(DetailUser.EXTRA_DATA) as? User
 
         getFollowersModel = ViewModelProvider(
             this,
@@ -46,7 +46,9 @@ class Followers : Fragment() {
                 showLoading(false)
             }
         })
-        getFollowersModel.setDataFollowers(userList.username)
+        if (userList != null) {
+            getFollowersModel.setDataFollowers(userList.username)
+        }
 
         binding.tvFollowers.layoutManager = LinearLayoutManager(requireContext())
         binding.tvFollowers.adapter = adapter
