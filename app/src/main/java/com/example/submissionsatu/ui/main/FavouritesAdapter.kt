@@ -17,15 +17,6 @@ class FavouritesAdapter: RecyclerView.Adapter<FavouritesAdapter.FavouritesViewHo
 
     inner class FavouritesViewHolder(private val binding: ItemFavouritesBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(fav: Favourites) {
-            val user = User()
-            user.avatar
-            user.username
-            user.name
-            user.company
-            user.location
-            user.repository
-            user.following
-            user.followers
             with(binding) {
                 favUsername.text = fav.username
                 favName.text = fav.name
@@ -33,6 +24,15 @@ class FavouritesAdapter: RecyclerView.Adapter<FavouritesAdapter.FavouritesViewHo
                     .load(fav.avatar)
                     .into(binding.avatarFav)
                 itemView.setOnClickListener {
+                    val user = User()
+                    user.avatar
+                    user.username
+                    user.name
+                    user.company
+                    user.location
+                    user.repository
+                    user.following
+                    user.followers
                     val intent = Intent(it.context, DetailUser::class.java)
                     intent.putExtra(DetailUser.EXTRA_DATA, user)
                     it.context.startActivity(intent)
