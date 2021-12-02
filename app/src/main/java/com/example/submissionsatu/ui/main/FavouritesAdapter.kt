@@ -25,9 +25,9 @@ class FavouritesAdapter: RecyclerView.Adapter<FavouritesAdapter.FavouritesViewHo
                     .into(binding.avatarFav)
                 itemView.setOnClickListener {
                     val user = User()
-                    user.avatar
-                    user.username
-                    user.name
+                    user.avatar = fav.avatar
+                    user.username = fav.username
+                    user.name = fav.name
                     user.company
                     user.location
                     user.repository
@@ -35,6 +35,7 @@ class FavouritesAdapter: RecyclerView.Adapter<FavouritesAdapter.FavouritesViewHo
                     user.followers
                     val intent = Intent(it.context, DetailUser::class.java)
                     intent.putExtra(DetailUser.EXTRA_DATA, user)
+                    intent.putExtra(DetailUser.EXTRA_FAV, fav)
                     it.context.startActivity(intent)
                 }
             }

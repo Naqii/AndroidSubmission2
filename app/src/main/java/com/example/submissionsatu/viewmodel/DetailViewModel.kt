@@ -18,7 +18,7 @@ class DetailViewModel : ViewModel() {
         val url = "https://api.github.com/users/$id"
         val detailUser = ArrayList<User>()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         client.get(url, object : AsyncHttpResponseHandler() {
                 override fun onSuccess(
                     statusCode: Int,
