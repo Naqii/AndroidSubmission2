@@ -16,12 +16,6 @@ import com.example.submissionsatu.view.DetailUser
 import com.example.submissionsatu.viewmodel.FollowingModel
 
 class Following : Fragment() {
-
-//    companion object {
-//        private val TAG = Following::class.java.simpleName
-//    }
-
-//    private var listUser: ArrayList<User> = ArrayList()
     private lateinit var getFollowingModel: FollowingModel
     private lateinit var binding: FragmentFollowingBinding
     private lateinit var adapter: ListUserAdapter

@@ -16,7 +16,6 @@ import com.example.submissionsatu.view.DetailUser
 import com.example.submissionsatu.viewmodel.FollowersModel
 
 class Followers : Fragment() {
-//    private var listUser = ArrayList<User>()
     private lateinit var getFollowersModel: FollowersModel
     private lateinit var binding: FragmentFollowersBinding
     private lateinit var adapter: ListUserAdapter
