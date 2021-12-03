@@ -28,8 +28,7 @@ class FavouritesAdapter: RecyclerView.Adapter<FavouritesAdapter.FavouritesViewHo
                     user.avatar = fav.avatar
                     user.username = fav.username
                     user.name = fav.name
-                    val intent = Intent(it.context, DetailUser::class.java)
-                    intent.putExtra(DetailUser.EXTRA_DATA, user)
+                    val intent = Intent(it.context, DetailUser::class.java).putExtra(DetailUser.EXTRA_DATA, user)
                     intent.putExtra(DetailUser.EXTRA_FAV, fav)
                     it.context.startActivity(intent)
                 }

@@ -2,6 +2,7 @@ package com.example.submissionsatu.view
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
@@ -11,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.submissionsatu.R
+import com.example.submissionsatu.adapter.ListUserAdapter
 import com.example.submissionsatu.adapter.SectionsPagerAdapter
 import com.example.submissionsatu.database.Favourites
 import com.example.submissionsatu.databinding.ActivityDetailUserBinding
@@ -69,6 +71,7 @@ class DetailUser : AppCompatActivity() {
         }
         tabLayout()
 
+
         binding.fabAdd.setOnClickListener {
             val username = binding.textUsername.text.toString().trim()
             val name = binding.textName.text.toString().trim()
@@ -105,6 +108,15 @@ class DetailUser : AppCompatActivity() {
             textLocation.text = user.location
             textRepository.text = user.repository
             textCompany.text = user.company
+            showLoading(false)
+        }
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.INVISIBLE
         }
     }
 

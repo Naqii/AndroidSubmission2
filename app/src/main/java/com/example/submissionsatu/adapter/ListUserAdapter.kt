@@ -1,14 +1,12 @@
 package com.example.submissionsatu.adapter
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.submissionsatu.databinding.ItemRowUserBinding
 import com.example.submissionsatu.model.User
-import com.example.submissionsatu.view.DetailUser
 
 class ListUserAdapter: RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
     private val listUser = ArrayList<User>()
@@ -33,9 +31,6 @@ class ListUserAdapter: RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
         holder.binding.tvUsername.text = dataUser.username
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(dataUser)
-            val intent = Intent(it.context, DetailUser::class.java)
-            intent.putExtra(DetailUser.EXTRA_DATA, dataUser)
-            it.context.startActivity(intent)
         }
     }
 

@@ -1,6 +1,7 @@
 package com.example.submissionsatu.view.fragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -59,6 +60,17 @@ class Following : Fragment() {
 
         binding.tvFollowing.layoutManager = LinearLayoutManager(activity)
         binding.tvFollowing.adapter = adapter
+        adapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: User) {
+                showSelectedUser(data)
+            }
+        })
+    }
+
+    private fun showSelectedUser(user: User) {
+        val intent = Intent(activity, DetailUser::class.java)
+        intent.putExtra(DetailUser.EXTRA_DATA, user)
+        startActivity(intent)
     }
 
     private fun showLoading(state: Boolean) {
