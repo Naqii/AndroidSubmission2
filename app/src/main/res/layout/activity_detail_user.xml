@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".view.DetailUser">
@@ -16,26 +17,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:foregroundGravity="bottom"
+            android:verticalScrollbarPosition="defaultPosition"
             app:fabSize="normal"
-            app:layout_anchor="@id/view_pager"
-            app:layout_anchorGravity="bottom|end"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.954"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_favourite"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_avatar"
-            android:layout_width="300dp"
-            android:layout_height="250dp"
+            android:layout_width="149dp"
+            android:layout_height="158dp"
             android:layout_gravity="center"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.061"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck"
             tools:src="@tools:sample/avatars" />
 
         <TextView
@@ -44,38 +43,84 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="12dp"
             android:text="@string/username"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_avatar" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_avatar"
+            app:layout_constraintTop_toTopOf="@+id/img_avatar" />
+
 
         <TextView
             android:id="@+id/text_name"
             style="@style/Detail_Sub2"
             android:layout_width="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="8dp"
             android:text="@string/data_name"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_avatar"
             app:layout_constraintTop_toBottomOf="@+id/text_username" />
 
-
         <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/img_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/img_avatar">
+
+            <TableLayout>
+
+                <ImageView
+                    android:id="@+id/location"
+                    style="@style/Detail_Sub1"
+                    android:src="@drawable/ic_location"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/company"
+                    style="@style/Detail_Sub1"
+                    android:src="@drawable/ic_company"
+                    tools:ignore="ContentDescription" />
+            </TableLayout>
+
+            <TableLayout>
+
+                <TextView
+                    android:id="@+id/text_location"
+                    style="@style/Detail_Sub2"
+                    android:text="@string/location" />
+
+                <TextView
+                    android:id="@+id/text_company"
+                    style="@style/Detail_Sub2"
+                    android:text="@string/company" />
+            </TableLayout>
+
+        </TableRow>
+
+        <TableLayout
             android:id="@+id/tableRow3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_name">
+            app:layout_constraintBottom_toBottomOf="@+id/img_avatar"
+            app:layout_constraintStart_toEndOf="@+id/img_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/text_name"
+            app:layout_constraintVertical_bias="0.0">
 
             <TextView
-                android:id="@+id/location"
+                android:id="@+id/followers"
                 style="@style/Detail_Sub1"
-                android:text="@string/location" />
+                android:text="@string/followers" />
 
             <TextView
                 android:id="@+id/repository"
@@ -83,53 +128,59 @@
                 android:text="@string/repository" />
 
             <TextView
-                android:id="@+id/company"
+                android:id="@+id/following"
                 style="@style/Detail_Sub1"
-                android:text="@string/company" />
-        </TableRow>
+                android:text="@string/following" />
 
-        <TableRow
+        </TableLayout>
+
+        <TableLayout
             android:id="@+id/tableRow4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/tableRow3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableRow3">
+            app:layout_constraintStart_toEndOf="@+id/tableRow3"
+            app:layout_constraintTop_toBottomOf="@+id/text_name">
 
             <TextView
-                android:id="@+id/text_location"
-                style="@style/Detail_Sub2"
-                android:text="@string/data_name" />
+                android:id="@+id/tv_followers"
+                style="@style/Detail_Sub1"
+                android:text="@string/followers" />
 
             <TextView
                 android:id="@+id/text_repository"
                 style="@style/Detail_Sub2"
-                android:text="@string/data_repository" />
+                android:text="@string/repository" />
 
             <TextView
-                android:id="@+id/text_company"
-                style="@style/Detail_Sub2"
-                android:text="@string/data_company" />
-        </TableRow>
+                android:id="@+id/tv_following"
+                style="@style/Detail_Sub1"
+                android:text="@string/following" />
+
+        </TableLayout>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:background="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tableRow4"
-            app:tabTextColor="@color/Option1" />
+            app:layout_constraintTop_toBottomOf="@+id/tableRow1"
+            app:tabTextColor="@color/Option1"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tabs"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabs" />
 
         <ProgressBar
             android:id="@+id/progressBar"

@@ -68,11 +68,6 @@ class Following : Fragment() {
     }
 
     private fun showLoading(state: Boolean) {
-        if (state) {
-            binding.progressBarFollowing.visibility = View.VISIBLE
-        } else {
-            binding.progressBarFollowing.visibility = View.INVISIBLE
-        }
-
+        binding.progressBarFollowing.visibility = if (state) View.VISIBLE else View.INVISIBLE
     }
 }

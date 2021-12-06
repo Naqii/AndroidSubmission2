@@ -12,7 +12,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.submissionsatu.R
-import com.example.submissionsatu.adapter.ListUserAdapter
 import com.example.submissionsatu.adapter.SectionsPagerAdapter
 import com.example.submissionsatu.database.Favourites
 import com.example.submissionsatu.databinding.ActivityDetailUserBinding
@@ -24,19 +23,6 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class DetailUser : AppCompatActivity() {
-
-    companion object {
-        const val EXTRA_DATA = "extra_data"
-        const val EXTRA_FAV = "extra_favourite"
-        const val ALERT_DIALOG_CLOSE = 10
-
-        @StringRes
-        private val TAB_TITLES = intArrayOf(
-            R.string.followers,
-            R.string.following
-        )
-    }
-
     private lateinit var binding: ActivityDetailUserBinding
     private lateinit var getUserDetail: DetailViewModel
 
@@ -49,7 +35,7 @@ class DetailUser : AppCompatActivity() {
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.title = "Detail User"
+        supportActionBar?.title = getString(R.string.detail_user)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val userList = intent.getParcelableExtra(EXTRA_DATA) as? User
@@ -71,7 +57,6 @@ class DetailUser : AppCompatActivity() {
         }
         tabLayout()
 
-
         binding.fabAdd.setOnClickListener {
             val username = binding.textUsername.text.toString().trim()
             val name = binding.textName.text.toString().trim()
@@ -86,10 +71,10 @@ class DetailUser : AppCompatActivity() {
             if (sFavourites) {
                 showAlertDialog(ALERT_DIALOG_CLOSE)
             } else {
-                fav.let { favourites ->
-                    favourites?.username = username
-                    favourites?.name = name
-                    favourites?.avatar = avatar.toString()
+                fav?.let {
+                    it.username = username
+                    it.name = name
+                    it.avatar = avatar.toString()
                 }
                 favAddUpdateViewModel.insert(fav as Favourites)
                 showToast(getString(R.string.tambah))
@@ -108,6 +93,8 @@ class DetailUser : AppCompatActivity() {
             textLocation.text = user.location
             textRepository.text = user.repository
             textCompany.text = user.company
+            tvFollowers.text = user.followers
+            tvFollowing.text = user.following
             showLoading(false)
         }
     }
@@ -165,5 +152,17 @@ class DetailUser : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    companion object {
+        const val EXTRA_DATA = "extra_data"
+        const val EXTRA_FAV = "extra_favourite"
+        const val ALERT_DIALOG_CLOSE = 10
+
+        @StringRes
+        private val TAB_TITLES = intArrayOf(
+            R.string.followers,
+            R.string.following
+        )
     }
 }

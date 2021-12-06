@@ -47,11 +47,7 @@ class FavouriteActivity : AppCompatActivity() {
     }
 
     private fun showLoading(state: Boolean) {
-        if (state) {
-            binding?.progressBar?.visibility = View.VISIBLE
-        } else {
-            binding?.progressBar?.visibility = View.INVISIBLE
-        }
+        binding?.progressBar?.visibility = if (state) View.VISIBLE else View.INVISIBLE
     }
 
     override fun onDestroy() {

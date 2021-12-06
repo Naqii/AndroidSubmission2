@@ -40,6 +40,7 @@
     <string name="batal">Batal</string>
     <string name="txt_hapus">Delete</string>
     <string name="dialog_hapus">Apakah anda yakin ingin menghapus item ini?</string>
+    <string name="detail_user">Detail User</string>
 </resources>
 
 

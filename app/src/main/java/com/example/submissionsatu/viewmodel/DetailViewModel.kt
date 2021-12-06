@@ -18,7 +18,7 @@ class DetailViewModel : ViewModel() {
         val url = "https://api.github.com/users/$id"
         val detailUser = ArrayList<User>()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         client.get(url, object : AsyncHttpResponseHandler() {
                 override fun onSuccess(
                     statusCode: Int,
@@ -37,7 +37,6 @@ class DetailViewModel : ViewModel() {
                         user.repository = jsonObject.getString("public_repos")
                         user.followers = jsonObject.getString("followers")
                         user.following = jsonObject.getString("following")
-
                         detailUser.add(user)
                         listUser.postValue(detailUser)
                     } catch (e: Exception) {

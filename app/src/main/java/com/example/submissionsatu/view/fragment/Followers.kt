@@ -1,6 +1,5 @@
 package com.example.submissionsatu.view.fragment
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -28,11 +27,9 @@ class Followers : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = ListUserAdapter()
-        adapter.notifyDataSetChanged()
 
         val userList = activity?.intent?.getParcelableExtra(DetailUser.EXTRA_DATA) as? User
 
@@ -66,10 +63,6 @@ class Followers : Fragment() {
     }
 
     private fun showLoading(state: Boolean) {
-        if (state) {
-            binding.progressBarFollowers.visibility = View.VISIBLE
-        } else {
-            binding.progressBarFollowers.visibility = View.INVISIBLE
-        }
+        binding.progressBarFollowers.visibility = if (state) View.VISIBLE else View.INVISIBLE
     }
 }
